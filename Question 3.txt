@@ -1,0 +1,22 @@
+Question 3 : 
+Which line will show error and why?
+#include<stdio.h>
+int main(){
+char *a = "India";
+char b[] = "India";
+a = a+1;//line 5
+b = b+1;//line 6
+}
+
+Answer: 
+
+Line 5 will not show an error, but line 6 will.
+
+In line 5, a is a pointer to a string literal, which is stored in read-only memory. Therefore, we can modify the pointer to point to a different location in memory, but we cannot modify the string literal itself. So, a = a + 1; will not cause an error, as it simply increments the pointer to point to the next character in the string.
+
+However, in line 6, b is an array of characters, which is stored in read-write memory. Therefore, we can modify the contents of the array. But, we cannot modify the array variable b itself to point to a different location in memory. So, b = b + 1; will cause a compile-time error, as it tries to assign a new value to the array variable b.
+
+The correct way to increment the pointer a to point to the next character in the string would be to use the pointer dereference operator * like this:
+
+a = a + 1; // incorrect
+*a = *a + 1; // correct
